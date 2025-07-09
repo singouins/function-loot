@@ -1,0 +1,46 @@
+name: Pipeline Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        function: [ "unload" ]
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub 🔐
+      uses: docker/login-action@v3
+      with:
+        username: ${{ vars.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extracting Metadata 🔧
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ vars.DOCKER_USERNAME }}/function-${{ matrix.function }}
+        tags: |
+          type=sha,prefix=,suffix=,format=short
+          type=edge
+
+    - name: Build & push to Docker Hub 🚀
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./${{ matrix.function }}/Dockerfile
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
