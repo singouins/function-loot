@@ -18,6 +18,6 @@ updates:
   # Maintain Dockerfile content
   - package-ecosystem: "docker"
     directories:
-      - "unload/"
+      - "/"
     schedule:
       interval: "weekly"
