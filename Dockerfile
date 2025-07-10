@@ -4,12 +4,12 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY /unload/package*.json ./
+COPY /package*.json ./
 RUN npm install
 
 # Copy source code
-COPY /unload/src ./src
-COPY /unload/tsconfig.json ./
+COPY /src ./src
+COPY /tsconfig.json ./
 
 # Build TypeScript to JavaScript
 RUN npm run build

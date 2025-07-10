@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn src/index.ts",
-    "start": "node dist/index.js"
+    "dev-item-unload": "ts-node-dev --respawn src/index-fn-item-unload.ts",
+    "start-item-unload": "node dist/index-fn-item-unload.js",
+    "start": "while true; do sleep 30; done;"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
+    "ioredis": "^5.6.1",
     "mongoose": "^8.16.1",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"

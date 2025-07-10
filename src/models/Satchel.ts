@@ -20,7 +20,7 @@ interface SatchelShard {
   legendary: number;
 }
 
-interface SatchelAmmo {
+export interface SatchelAmmo {
   arrow: number;
   bolt: number;
   cal22: number;
