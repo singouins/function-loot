@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "dev-item-reload": "ts-node-dev --respawn src/index-fn-item-reload.ts",
     "dev-item-unload": "ts-node-dev --respawn src/index-fn-item-unload.ts",
+    "start-item-reload": "node dist/index-fn-item-reload.js",
     "start-item-unload": "node dist/index-fn-item-unload.js",
     "start": "while true; do sleep 30; done;"
   },
