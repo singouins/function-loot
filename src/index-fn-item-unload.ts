@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 
-import unloadRoutes from './routes/unload';
+import unloadRoute from './routes/unload';
 import logger from './logger';
 
 logger.info(`Server starting`)
@@ -13,7 +13,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/item', unloadRoutes); // Route /item/:uuid/unload
+app.use('/item', unloadRoute);  // Route /item/:uuid/unload
 
 // Construct MongoDB URI from env vars
 const {
