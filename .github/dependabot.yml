@@ -6,8 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directories:
-      - "unload/"
+    directory: "/"
     schedule:
       interval: "weekly"
   # Maintain dependencies for GitHub Actions
@@ -17,7 +16,6 @@ updates:
       interval: "weekly"
   # Maintain Dockerfile content
   - package-ecosystem: "docker"
-    directories:
-      - "/"
+    directory: "/"
     schedule:
       interval: "weekly"
